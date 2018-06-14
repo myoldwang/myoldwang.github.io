@@ -79,16 +79,17 @@
 
 
 
-<meta name="description" content="This is Wangxianyu&apos;s web blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Web Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="1、如何优雅的取整123let a = ~~2.33  let b = 2.33 | 0  let c = 2.33 &amp;gt;&amp;gt; 0     // 输出结果均为 2 2、如何实现金钱格式化1234567890 =&amp;gt; 1,234,567,890   123456789101112正则实现let test1 = &amp;apos;1234567890&amp;apos;,let format = tes">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端冷知识 (持续更新)">
+<meta property="og:url" content="http://yoursite.com/2018/06/11/CoolKnowledge/index.html">
 <meta property="og:site_name" content="Web Blog">
-<meta property="og:description" content="This is Wangxianyu&apos;s web blog">
+<meta property="og:description" content="1、如何优雅的取整123let a = ~~2.33  let b = 2.33 | 0  let c = 2.33 &amp;gt;&amp;gt; 0     // 输出结果均为 2 2、如何实现金钱格式化1234567890 =&amp;gt; 1,234,567,890   123456789101112正则实现let test1 = &amp;apos;1234567890&amp;apos;,let format = tes">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-06-14T06:57:55.564Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Web Blog">
-<meta name="twitter:description" content="This is Wangxianyu&apos;s web blog">
+<meta name="twitter:title" content="前端冷知识 (持续更新)">
+<meta name="twitter:description" content="1、如何优雅的取整123let a = ~~2.33  let b = 2.33 | 0  let c = 2.33 &amp;gt;&amp;gt; 0     // 输出结果均为 2 2、如何实现金钱格式化1234567890 =&amp;gt; 1,234,567,890   123456789101112正则实现let test1 = &amp;apos;1234567890&amp;apos;,let format = tes">
 
 
 
@@ -118,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/11/CoolKnowledge/"/>
 
 
 
 
 
-  <title>Web Blog</title>
+  <title>前端冷知识 (持续更新) | Web Blog</title>
   
 
 
@@ -143,8 +144,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -217,9 +217,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -249,9 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/11/CoolKnowledge/" itemprop="url">前端冷知识 (持续更新)</a></h1>
+          <h1 class="post-title" itemprop="name headline">前端冷知识 (持续更新)</h1>
         
 
         <div class="post-meta">
@@ -301,20 +299,19 @@
       
 
       
-        
-          
-          1、如何优雅的取整123let a = ~~2.33  let b = 2.33 | 0  let c = 2.33 &gt;&gt; 0     // 输出结果均为 2
-2、如何实现金钱格式化1234567890 =&gt; 1,234,567,890  
-123456789101112正则实现let test1 = &apos;1234567890&apos;,let format = tes
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/06/11/CoolKnowledge/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+        <p>1、如何优雅的取整<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let a = ~~2.33  </span><br><span class="line">let b = 2.33 | 0  </span><br><span class="line">let c = 2.33 &gt;&gt; 0     // 输出结果均为 2</span><br></pre></td></tr></table></figure></p>
+<p>2、如何实现金钱格式化<br>1234567890 =&gt; 1,234,567,890  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">正则实现</span><br><span class="line">let test1 = &apos;1234567890&apos;,</span><br><span class="line">let format = test1.replace(/\B(?=(\d&#123;3&#125;)+(?!\d))/g, &apos;,&apos;);</span><br><span class="line">console.log(format)    // 1,234,567,890 </span><br><span class="line"></span><br><span class="line">非正则实现</span><br><span class="line">function formatCash(str) &#123;</span><br><span class="line">    return str.split(&apos;&apos;).reverse().reduce((prev, next, index) =&gt; &#123;</span><br><span class="line">        return ((index % 3) ? next : (next + &apos;,&apos;)) + prev</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">console.log(formatCash(&apos;1234567890&apos;)) // 1,234,567,890</span><br></pre></td></tr></table></figure>
+<p>3、如何最佳的让两个整数交换数值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let a = 1, b = 2;</span><br><span class="line">a^ = b;</span><br><span class="line">b^ = a;</span><br><span class="line">a^ = b;    // a = 2; b = 1</span><br></pre></td></tr></table></figure></p>
+<p>4、实现标准JSON的深拷贝<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let a = &#123;</span><br><span class="line">    a : 1,</span><br><span class="line">    b : &#123;</span><br><span class="line">        c : 2,</span><br><span class="line">        d : 3</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">let b = JSON.parse(JSON.stringify(a))</span><br></pre></td></tr></table></figure></p>
+<p>5、不用Number, parseInt, parseFloat方法把’1’字符串转换成数字<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let a = &apos;1&apos;;</span><br><span class="line">+a  // 1</span><br></pre></td></tr></table></figure></p>
+<p>6、最短的代码实现数组去重<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[...new Set[1, &apos;1&apos;, 2, 1, 3]]    // [1, &apos;1&apos;, 2, 3]</span><br></pre></td></tr></table></figure></p>
+<p>7、最短的代码实现一个长度为6且值为8的数组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Array(6).fill(8)  // [8, 8, 8, 8, 8, 8]</span><br></pre></td></tr></table></figure></p>
+<p>8、浏览器地址栏运行javascript代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">javascript:alert(&apos;hello world&apos;)</span><br><span class="line">// 运行html代码  </span><br><span class="line">data:text/html,&lt;h1&gt;Hello World!&lt;/h1&gt;</span><br><span class="line">//把浏览器当编辑器</span><br><span class="line">data:text/html, &lt;html contenteditable&gt;</span><br></pre></td></tr></table></figure></p>
+<p>9、利用a标签自动解析URL<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let a = document.createElement(&apos;a&apos;);</span><br><span class="line">a.href = &apos;http://www.google.com/wayou/p/&apos;;</span><br><span class="line">console.log(a.host);   // www.google.com</span><br></pre></td></tr></table></figure></p>
+<p>10、生成随机字符串<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function randomnum(len)&#123;</span><br><span class="line">    var rdmstring = &apos;&apos;;</span><br><span class="line">    for(;rdmstring.length&lt;len;rdmstring+=Math.random().toString(36).substr(1));</span><br><span class="line">    return rdmstring.substr(0,len);</span><br><span class="line">&#125;</span><br><span class="line">randomnum(15);//生成15位数的随机字符串。</span><br><span class="line">//如果不指定基数2到36，生成0-1的随机数。</span><br></pre></td></tr></table></figure></p>
+<p>11、更高效率从浮点型转成整型，比parseInt,Math.round()的效率高<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let foo = (12.4 / 4.13) | 0;   // 3</span><br><span class="line">let bar = ~~(12.4 / 4.13);    // 3 </span><br><span class="line">将一个值快速转化为布尔值  !!window === true</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
     
@@ -324,6 +321,30 @@
     
 
     
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/mm_facetoface_collect_qrcode_1528869904452.png" alt="Walker wang WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
 
     
 
@@ -331,138 +352,28 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/11/Knowledge/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Walker wang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Web Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/11/Knowledge/" itemprop="url">前端知识总结 (持续更新)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-11T15:55:19+08:00">
-                2018-06-11
-              </time>
+              <a href="/2018/06/11/Knowledge/" rel="next" title="前端知识总结 (持续更新)">
+                <i class="fa fa-chevron-left"></i> 前端知识总结 (持续更新)
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-          
-          
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/06/11/Knowledge/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -472,10 +383,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -483,6 +395,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -702,6 +618,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
