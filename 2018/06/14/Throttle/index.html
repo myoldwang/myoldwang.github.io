@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="1、如何优雅的取整123let a = ~~2.33  let b = 2.33 | 0  let c = 2.33 &amp;gt;&amp;gt; 0     // 输出结果均为 2 2、如何实现金钱格式化1234567890 =&amp;gt; 1,234,567,890   123456789101112正则实现let test1 = &amp;apos;1234567890&amp;apos;,let format = tes">
+<meta name="description" content="概念解释函数节流和函数防抖，两者都是优化高频率执行js代码的一种手段。 大家大概都知道旧款电视机的工作原理，就是一行行得扫描出色彩到屏幕上，然后组成一张张图片。由于肉眼只能分辨出一定频率的变化，当高频率的扫描，人类是感觉不出来的。反而形成一种视觉效果，就是一张图。就像高速旋转的风扇，你看不到扇叶，只看到了一个圆一样。 同理，可以类推到js代码。在一定时间内，代码执行的次数不一定要非常多。达到一定频">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端冷知识 (持续更新)">
-<meta property="og:url" content="http://yoursite.com/2018/06/11/CoolKnowledge/index.html">
+<meta property="og:title" content="Javascript函数节流和函数防抖">
+<meta property="og:url" content="http://yoursite.com/2018/06/14/Throttle/index.html">
 <meta property="og:site_name" content="Web Blog">
-<meta property="og:description" content="1、如何优雅的取整123let a = ~~2.33  let b = 2.33 | 0  let c = 2.33 &amp;gt;&amp;gt; 0     // 输出结果均为 2 2、如何实现金钱格式化1234567890 =&amp;gt; 1,234,567,890   123456789101112正则实现let test1 = &amp;apos;1234567890&amp;apos;,let format = tes">
+<meta property="og:description" content="概念解释函数节流和函数防抖，两者都是优化高频率执行js代码的一种手段。 大家大概都知道旧款电视机的工作原理，就是一行行得扫描出色彩到屏幕上，然后组成一张张图片。由于肉眼只能分辨出一定频率的变化，当高频率的扫描，人类是感觉不出来的。反而形成一种视觉效果，就是一张图。就像高速旋转的风扇，你看不到扇叶，只看到了一个圆一样。 同理，可以类推到js代码。在一定时间内，代码执行的次数不一定要非常多。达到一定频">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-14T06:57:55.564Z">
+<meta property="og:updated_time" content="2018-06-14T09:06:57.449Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前端冷知识 (持续更新)">
-<meta name="twitter:description" content="1、如何优雅的取整123let a = ~~2.33  let b = 2.33 | 0  let c = 2.33 &amp;gt;&amp;gt; 0     // 输出结果均为 2 2、如何实现金钱格式化1234567890 =&amp;gt; 1,234,567,890   123456789101112正则实现let test1 = &amp;apos;1234567890&amp;apos;,let format = tes">
+<meta name="twitter:title" content="Javascript函数节流和函数防抖">
+<meta name="twitter:description" content="概念解释函数节流和函数防抖，两者都是优化高频率执行js代码的一种手段。 大家大概都知道旧款电视机的工作原理，就是一行行得扫描出色彩到屏幕上，然后组成一张张图片。由于肉眼只能分辨出一定频率的变化，当高频率的扫描，人类是感觉不出来的。反而形成一种视觉效果，就是一张图。就像高速旋转的风扇，你看不到扇叶，只看到了一个圆一样。 同理，可以类推到js代码。在一定时间内，代码执行的次数不一定要非常多。达到一定频">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/11/CoolKnowledge/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/14/Throttle/"/>
 
 
 
 
 
-  <title>前端冷知识 (持续更新) | Web Blog</title>
+  <title>Javascript函数节流和函数防抖 | Web Blog</title>
   
 
 
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">前端冷知识 (持续更新)</h1>
+          <h1 class="post-title" itemprop="name headline">Javascript函数节流和函数防抖</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-11T15:55:19+08:00">
-                2018-06-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-14T16:57:56+08:00">
+                2018-06-14
               </time>
             
 
@@ -299,18 +299,36 @@
       
 
       
-        <p>1、如何优雅的取整<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let a = ~~2.33  </span><br><span class="line">let b = 2.33 | 0  </span><br><span class="line">let c = 2.33 &gt;&gt; 0     // 输出结果均为 2</span><br></pre></td></tr></table></figure></p>
-<p>2、如何实现金钱格式化<br>1234567890 =&gt; 1,234,567,890  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">正则实现</span><br><span class="line">let test1 = &apos;1234567890&apos;,</span><br><span class="line">let format = test1.replace(/\B(?=(\d&#123;3&#125;)+(?!\d))/g, &apos;,&apos;);</span><br><span class="line">console.log(format)    // 1,234,567,890 </span><br><span class="line"></span><br><span class="line">非正则实现</span><br><span class="line">function formatCash(str) &#123;</span><br><span class="line">    return str.split(&apos;&apos;).reverse().reduce((prev, next, index) =&gt; &#123;</span><br><span class="line">        return ((index % 3) ? next : (next + &apos;,&apos;)) + prev</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">console.log(formatCash(&apos;1234567890&apos;)) // 1,234,567,890</span><br></pre></td></tr></table></figure>
-<p>3、如何最佳的让两个整数交换数值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let a = 1, b = 2;</span><br><span class="line">a^ = b;</span><br><span class="line">b^ = a;</span><br><span class="line">a^ = b;    // a = 2; b = 1</span><br></pre></td></tr></table></figure></p>
-<p>4、实现标准JSON的深拷贝<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let a = &#123;</span><br><span class="line">    a : 1,</span><br><span class="line">    b : &#123;</span><br><span class="line">        c : 2,</span><br><span class="line">        d : 3</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">let b = JSON.parse(JSON.stringify(a))</span><br></pre></td></tr></table></figure></p>
-<p>5、不用Number, parseInt, parseFloat方法把’1’字符串转换成数字<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let a = &apos;1&apos;;</span><br><span class="line">+a  // 1</span><br></pre></td></tr></table></figure></p>
-<p>6、最短的代码实现数组去重<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[...new Set[1, &apos;1&apos;, 2, 1, 3]]    // [1, &apos;1&apos;, 2, 3]</span><br></pre></td></tr></table></figure></p>
-<p>7、最短的代码实现一个长度为6且值为8的数组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Array(6).fill(8)  // [8, 8, 8, 8, 8, 8]</span><br></pre></td></tr></table></figure></p>
-<p>8、浏览器地址栏运行javascript代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">javascript:alert(&apos;hello world&apos;)</span><br><span class="line">// 运行html代码  </span><br><span class="line">data:text/html,&lt;h1&gt;Hello World!&lt;/h1&gt;</span><br><span class="line">//把浏览器当编辑器</span><br><span class="line">data:text/html, &lt;html contenteditable&gt;</span><br></pre></td></tr></table></figure></p>
-<p>9、利用a标签自动解析URL<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let a = document.createElement(&apos;a&apos;);</span><br><span class="line">a.href = &apos;http://www.google.com/wayou/p/&apos;;</span><br><span class="line">console.log(a.host);   // www.google.com</span><br></pre></td></tr></table></figure></p>
-<p>10、生成随机字符串<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function randomnum(len)&#123;</span><br><span class="line">    var rdmstring = &apos;&apos;;</span><br><span class="line">    for(;rdmstring.length&lt;len;rdmstring+=Math.random().toString(36).substr(1));</span><br><span class="line">    return rdmstring.substr(0,len);</span><br><span class="line">&#125;</span><br><span class="line">randomnum(15);//生成15位数的随机字符串。</span><br><span class="line">//如果不指定基数2到36，生成0-1的随机数。</span><br></pre></td></tr></table></figure></p>
-<p>11、更高效率从浮点型转成整型，比parseInt,Math.round()的效率高<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let foo = (12.4 / 4.13) | 0;   // 3</span><br><span class="line">let bar = ~~(12.4 / 4.13);    // 3 </span><br><span class="line">将一个值快速转化为布尔值  !!window === true</span><br></pre></td></tr></table></figure></p>
+        <h4 id="概念解释"><a href="#概念解释" class="headerlink" title="概念解释"></a>概念解释</h4><p>函数节流和函数防抖，两者都是优化高频率执行js代码的一种手段。</p>
+<p>大家大概都知道旧款电视机的工作原理，就是一行行得扫描出色彩到屏幕上，然后组成一张张图片。<br>由于肉眼只能分辨出一定频率的变化，当高频率的扫描，人类是感觉不出来的。反而形成一种视觉效果，就是一张图。<br>就像高速旋转的风扇，你看不到扇叶，只看到了一个圆一样。</p>
+<p>同理，可以类推到js代码。在一定时间内，代码执行的次数不一定要非常多。达到一定频率就足够了。<br>因为跑得越多，带来的效果也是一样。倒不如，把js代码的执行次数控制在合理的范围。<br>既能节省浏览器CPU资源，又能让页面浏览更加顺畅，不会因为js的执行而发生卡顿。<br>这就是函数节流和函数防抖要做的事。</p>
+<p>函数节流是指一定时间内js方法只跑一次。比如人的眨眼睛，就是一定时间内眨一次。<br>这是函数节流最形象的解释。</p>
+<p>函数防抖是指频繁触发的情况下，只有足够的空闲时间，才执行代码一次。比如生活中的坐公交，<br>就是一定时间内，如果有人陆续刷卡上车，司机就不会开车。只有别人没刷卡了，司机才开车。</p>
+<h4 id="函数节流"><a href="#函数节流" class="headerlink" title="函数节流"></a>函数节流</h4><p>函数节流应用的实际场景，多数在监听页面元素滚动事件的时候会用到。因为滚动事件，是一个高频触发的事件。<br>以下是监听页面元素滚动的示例代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 函数节流</span><br><span class="line">var canRun = true;</span><br><span class="line">document.getElementById(&quot;throttle&quot;).onscroll = function()&#123;</span><br><span class="line">    if(!canRun)&#123;</span><br><span class="line">        // 判断是否已空闲，如果在执行中，则直接return</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    canRun = false;</span><br><span class="line">    setTimeout(function()&#123;</span><br><span class="line">        console.log(&quot;函数节流&quot;);</span><br><span class="line">        canRun = true;</span><br><span class="line">    &#125;, 300);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p><strong>函数节流要点是，声明一个变量当标志位，记录当前代码是否在执行</strong>  </p>
+</blockquote>
+<p>如果空闲，则可以正常触发方法执行。</p>
+<p>如果代码正在执行，则取消这次方法执行，直接return。</p>
+<p>这个方法的作用是监听ID为throttle元素的滚动事件。</p>
+<p>当canRun为true，则代表现在的滚动处理事件是空闲的，可以使用。</p>
+<p>通过关卡if(!canRun)，等于就拿到了通行证。然后下一步的操作就是立马将关卡关上canRun=false。<br>这样，其他请求执行滚动事件的方法，就被挡回去了。</p>
+<p>接着用setTimeout规定最小的时间间隔300，接着再执行setTimeout方法体里面的内容。</p>
+<p>最后，等setTimeout里面的方法都执行完毕，才释放关卡canRun=true，允许下一个访问者进来。</p>
+<p>这个函数节流的实现形式，需要注意的是执行的间隔时间是&gt;=300ms。如果具体执行的方法是包含callback的，<br>也可以将canRun=true这一步放到callback中。理解了函数节流的关卡设置重点，其实改起来就简单多了。</p>
+<h4 id="函数防抖"><a href="#函数防抖" class="headerlink" title="函数防抖"></a>函数防抖</h4><p>函数防抖的应用场景，最常见的就是用户注册时候的手机号码验证和邮箱验证了。只有等用户输入完毕后，前端才需要检查格式是否正确，<br>如果不正确，再弹出提示语。以下还是以页面元素滚动监听的例子，来进行解析：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 函数防抖</span><br><span class="line">var timer = false;</span><br><span class="line">document.getElementById(&quot;debounce&quot;).onscroll = function()&#123;</span><br><span class="line">    clearTimeout(timer); // 清除未执行的代码，重置回初始化状态</span><br><span class="line">        timer = setTimeout(function()&#123;</span><br><span class="line">        console.log(&quot;函数防抖&quot;);</span><br><span class="line">    &#125;, 300);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p><strong>函数节流的要点，也是需要一个setTimeout来辅助实现，延迟执行需要跑的代码。</strong>  </p>
+</blockquote>
+<p>如果方法多次触发，则把上次记录的延迟执行代码用clearTimeout清掉，重新开始。</p>
+<p>如果计时完毕，没有方法进来访问触发，则执行代码。</p>
+<p>这个方法的作用是监听ID为debounce元素的滚动事件</p>
+<p>进入滚动事件方法体的时候，做的第一件事就是清除上次未执行的setTimeout。而setTimeout的引用id由变量timer记录。</p>
+<p>clearTimeout方法，允许传入无效的值。所以这里直接执行clearTimeout即可。</p>
+<p>然后，将需要执行的代码放入setTimeout中，再返回setTimeout引用给timer缓存。</p>
+<p>如果倒计时300ms以后，还没有新的方法触发滚动事件，则执行setTimeout中的代码。</p>
+<p>函数防抖的实现重点，就是巧用setTimeout做缓存池，而且可以轻易地清除待执行的代码。</p>
+<p>其实，用队列的方式也可以做到这种效果。这里就不深入了。</p>
 
       
     </div>
@@ -359,8 +377,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="../Knowledge/" rel="next" title="前端知识总结 (持续更新)">
-                <i class="fa fa-chevron-left"></i> 前端知识总结 (持续更新)
+              <a href="../Ionic/" rel="next" title="Ionic知识总结">
+                <i class="fa fa-chevron-left"></i> Ionic知识总结
               </a>
             
           </div>
@@ -369,8 +387,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="../../14/VueSkills/" rel="prev" title="Vue知识技巧总结">
-                Vue知识技巧总结 <i class="fa fa-chevron-right"></i>
+              <a href="../MobileAdapter/Adapter/" rel="prev" title="移动端适配问题解决方案">
+                移动端适配问题解决方案 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -423,8 +441,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -482,6 +509,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念解释"><span class="nav-number">1.</span> <span class="nav-text">概念解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数节流"><span class="nav-number">2.</span> <span class="nav-text">函数节流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数防抖"><span class="nav-number">3.</span> <span class="nav-text">函数防抖</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

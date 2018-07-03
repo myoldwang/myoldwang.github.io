@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="../../../../lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="../../../../lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="../../../../css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="../../../../images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../../../../images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="../../../../images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="../../../../images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Ionic页面堆栈还记得Ionic 1中的state和router吗？他们两兄弟配合起来完成页面导航的功能，虽然它们使用起来并不算复杂，概念也很清晰，不过当页面增多、state嵌套等问题出现后复杂度也会增加，当复杂程度到达一定程度时工程必然难以维护和理解。而Ionic 2效仿原生页面堆栈的概念解决了上述问题。页面与组件   页面是应用的基石，是交互的基本单位，Ionic 2中页面是通过组件构成的，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ionic知识总结">
+<meta property="og:url" content="http://yoursite.com/2018/06/14/Ionic/index.html">
+<meta property="og:site_name" content="Web Blog">
+<meta property="og:description" content="Ionic页面堆栈还记得Ionic 1中的state和router吗？他们两兄弟配合起来完成页面导航的功能，虽然它们使用起来并不算复杂，概念也很清晰，不过当页面增多、state嵌套等问题出现后复杂度也会增加，当复杂程度到达一定程度时工程必然难以维护和理解。而Ionic 2效仿原生页面堆栈的概念解决了上述问题。页面与组件   页面是应用的基石，是交互的基本单位，Ionic 2中页面是通过组件构成的，">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-06-14T09:12:01.368Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ionic知识总结">
+<meta name="twitter:description" content="Ionic页面堆栈还记得Ionic 1中的state和router吗？他们两兄弟配合起来完成页面导航的功能，虽然它们使用起来并不算复杂，概念也很清晰，不过当页面增多、state嵌套等问题出现后复杂度也会增加，当复杂程度到达一定程度时工程必然难以维护和理解。而Ionic 2效仿原生页面堆栈的概念解决了上述问题。页面与组件   页面是应用的基石，是交互的基本单位，Ionic 2中页面是通过组件构成的，">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/14/Ionic/"/>
+
+
+
+
+
+  <title>Ionic知识总结 | Web Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Web Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Walker wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="../../../../images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Web Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Ionic知识总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-14T15:40:14+08:00">
+                2018-06-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="Ionic页面堆栈"><a href="#Ionic页面堆栈" class="headerlink" title="Ionic页面堆栈"></a>Ionic页面堆栈</h4><p>还记得Ionic 1中的state和router吗？他们两兄弟配合起来完成页面导航的功能，<br>虽然它们使用起来并不算复杂，概念也很清晰，不过当页面增多、state嵌套等问题出现后复杂度也会增加，<br>当复杂程度到达一定程度时工程必然难以维护和理解。而Ionic 2效仿原生页面堆栈的概念解决了上述问题。<br>页面与组件  </p>
+<p>页面是应用的基石，是交互的基本单位，Ionic 2中页面是通过组件构成的，Ionic 2中实现了很多常用组件用于更快地构建应用，<br>如Modal、Popup等。在理解Ionic 2之class及其修饰器@App、@Pipe中我们接触到了修饰器的概念，<br>并且简单介绍了@App和@Pipe的相关使用方式，使用组件也需要先使用修饰器@Component定义，下面是其基本使用方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import &#123;Component&#125; from &apos;@angular/core&apos;;</span><br><span class="line"></span><br><span class="line">@Component(&#123;</span><br><span class="line">    templateUrl: &quot;template.html&quot;</span><br><span class="line">&#125;)</span><br><span class="line">export class PageName()&#123;</span><br><span class="line">    constructor()&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用@Component首先需要使用import导入，并使用templateUrl或template指定其页面构成。<br>页面堆栈</p>
+<p>堆栈的概念大家都很熟悉，其基本原则是：先入后出。页面堆栈也不例外，可以将页面堆栈视为书箱，具体的页面视为不同的待放入书箱的书籍，每一次水平放入一本书，先放的书必然被后来的书“挡住”从而看不到了，想要重新看到就需要先将上面的书拿开。</p>
+<p>其实Ionic 2中与其说是页面堆栈，不如说是组件堆栈，组件包括但不限于页面，而类似于Modal、Popup、Alert等相关的组件也是由堆栈维护的，下面提及的页面其实是组件的意思。</p>
+<p>Ionic 2中使用NavController操作页面堆栈。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// my-page.ts</span><br><span class="line">import &#123;Component&#125; from &apos;@angular/core&apos;;</span><br><span class="line"></span><br><span class="line">@Component(&#123;</span><br><span class="line">    templateUrl: &quot;my-page.html&quot;</span><br><span class="line">&#125;)</span><br><span class="line">export class MyPage()&#123;</span><br><span class="line">    constructor(public navCtrl: NavController) &#123;</span><br><span class="line">        // 使用this.navCtrl操作页面堆栈</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里创造NavController的实例是为了在类中任意地方都能够使用。</p>
+<p>NavController最基本的就是“放书”的push操作和“拿书”的pop操作，其具体操作类似于Array：</p>
+<p>NavController push操作</p>
+<p>NavController pop操作<br>push操作</p>
+<p>push操作将一个页面放到页面堆栈的最顶层，使其对用户可见：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.navCtrl.push(OtherPage);</span><br></pre></td></tr></table></figure></p>
+<p>使用push操作页面，只需要提供其页面组件的引用即可，当然首先要使用import将其导入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &#123;OtherPage&#125; from &apos;../other-page/other-page&apos;;</span><br></pre></td></tr></table></figure></p>
+<p>页面间传值</p>
+<p>大多情况下，页面之间需要通信，即页面之间需要进行数据传递，可以为push操作指定第二个参数作为页面间传递的参数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// my-page.ts</span><br><span class="line">this.navCtrl.push(OtherPage, &#123;</span><br><span class="line">    key1: value1,</span><br><span class="line">    key2: value2</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>在OtherPage中可以使用NavParams获取到其他页面传至本页面的值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// other-page.ts</span><br><span class="line">import &#123;Component&#125; from &apos;@angular/core&apos;;</span><br><span class="line"></span><br><span class="line">@Component(&#123;</span><br><span class="line">    templateUrl: &quot;other-page.html&quot;</span><br><span class="line">&#125;)</span><br><span class="line">export class OtherPage()&#123;</span><br><span class="line">    constructor(public navCtrl: NavController, public navParams: NavParams) &#123;</span><br><span class="line">        const data = this.navParams.data;</span><br><span class="line">        const value1 = this.navParams.get(&apos;key1&apos;);</span><br><span class="line">        const value2 = this.navParams.get(&apos;key2&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>pop操作</p>
+<p>和push对应的是pop操作，其实很多时候并不需要手动执行pop操作，Ionic 2中使用push操作时，导航栏上会加上返回按钮用于回到上一页面，也就是说pop操作会被自动执行。当然手动pop操作也是必要的，如用户注销需要跳转至登录页面等场景均需要手动调用pop操作：</p>
+<p><code>this.navCtrl.pop()</code>;</p>
+<h4 id="ionic-android-长时间打不开挂掉"><a href="#ionic-android-长时间打不开挂掉" class="headerlink" title="ionic android 长时间打不开挂掉"></a>ionic android 长时间打不开挂掉</h4><p>延长App启动时间，最起码不闪退<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;preference name = &quot;SplashScreenDelay&quot; value=&quot;10000&quot; /&gt;</span><br><span class="line">&lt;preference name = &quot;loadUrlTimeoutValue&quot; value=&quot;700000&quot; /&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="ionic页面的生命周期"><a href="#ionic页面的生命周期" class="headerlink" title="ionic页面的生命周期"></a>ionic页面的生命周期</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">// 页面被加载完成后调用的函数，切换页面时并不会进行重新加载，因为有cache的存在</span><br><span class="line">onPageLoaded() &#123;</span><br><span class="line">  console.log(&apos;page 1: page loaded.&apos;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 页面即将进入的时候</span><br><span class="line">onPageWillEnter() &#123;</span><br><span class="line">  // 在这里可以做页面初始化的一些事情</span><br><span class="line">  console.log(&apos;page 1: page will enter.&apos;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 页面已经进入的时候</span><br><span class="line">onPageDidEnter() &#123;</span><br><span class="line">  console.log(&apos;page 1: page did enter.&apos;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 页面即将离开的时候</span><br><span class="line">onPageWillLeave() &#123;</span><br><span class="line">  console.log(&apos;page 1: page will leave.&apos;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 页面已经离开的时候</span><br><span class="line">onPageDidLeave() &#123;</span><br><span class="line">  console.log(&apos;page 1: page did leave.&apos;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 从 DOM 中移除的时候执行的生命周期</span><br><span class="line">onPageWillUnload() &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 从 DOM 中移除执行完成的时候</span><br><span class="line">onPageDidUnload() &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="ionic-创建一个图标"><a href="#ionic-创建一个图标" class="headerlink" title="ionic 创建一个图标"></a>ionic 创建一个图标</h4><p>以png/psd/AI格式保存在<code>resource/android/icon.png</code>和<code>resource/android/icon.png</code>，然后使用如下命令，就可以生成不同尺寸的图标<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ionic resources -icon</span><br></pre></td></tr></table></figure></p>
+<p>创建启动页面图片，记动画面的源文件至少需要2208px * 2208px，创建完成后，保存为<code>resource/android/splash.png</code>和<code>resource/android/splash.png</code>，然后使用如下命令就可以生成不同尺寸的启动画面图片：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ionic resources --splash</span><br></pre></td></tr></table></figure></p>
+<h4 id="把所有平台设置为统一风格"><a href="#把所有平台设置为统一风格" class="headerlink" title="把所有平台设置为统一风格"></a>把所有平台设置为统一风格</h4><p>在ionicBootstap中设置mode属性即可<br>如想把所有平台设置为IOS风格：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//在app.module.ts文件中  </span><br><span class="line">imports:[</span><br><span class="line">    IonicModule.forRoot(MyApp,&#123;</span><br><span class="line">        mode:&apos;ios&apos;,</span><br><span class="line">        iconMode:&apos;ios&apos;,</span><br><span class="line">    &#125;)</span><br><span class="line">]</span><br><span class="line">//获取平台信息  cordova-plugin-device</span><br><span class="line">$cordovaDevice.getPlatform();</span><br><span class="line">//根据平台切换样式</span><br><span class="line">&lt;div ng-class=&quot;&#123;true:&apos;ios&apos;,false:&apos;android&apos;&#125;[isIOS]&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="ionic-基于ngx-translate实现多语言切换，翻译"><a href="#ionic-基于ngx-translate实现多语言切换，翻译" class="headerlink" title="ionic 基于ngx-translate实现多语言切换，翻译"></a>ionic 基于ngx-translate实现多语言切换，翻译</h4><p>介绍ngx-translate是Angular2+的国际化(i18n)库，gitgub地址：<a href="https://github.com/ngx-translate/core" target="_blank" rel="noopener">https://github.com/ngx-translate/core</a></p>
+<h4 id="当调试cordova时出现报错cordova-not-avaiable"><a href="#当调试cordova时出现报错cordova-not-avaiable" class="headerlink" title="当调试cordova时出现报错cordova_not_avaiable"></a>当调试cordova时出现报错<code>cordova_not_avaiable</code></h4><p>解决方法：声明<code>declare let cordova : any;</code></p>
+<h4 id="使用zipalign命令对安卓apk进行优化时找不到zipalign"><a href="#使用zipalign命令对安卓apk进行优化时找不到zipalign" class="headerlink" title="使用zipalign命令对安卓apk进行优化时找不到zipalign"></a>使用zipalign命令对安卓apk进行优化时找不到zipalign</h4><p>补全zipalign前面的所有路径   一般在android-sdk/tools路径下</p>
+<h4 id="连不上手机设备，报错could-not-read-ok-from-ADB-Server-failed-to-start-daemon"><a href="#连不上手机设备，报错could-not-read-ok-from-ADB-Server-failed-to-start-daemon" class="headerlink" title="连不上手机设备，报错could not read ok from ADB Server failed to start daemon"></a>连不上手机设备，报错<code>could not read ok from ADB Server failed to start daemon</code></h4><p>端口被占用，杀死360手机助手进程</p>
+<h4 id="cordova-run-android-–-release-自动打包签名"><a href="#cordova-run-android-–-release-自动打包签名" class="headerlink" title="cordova run android – release 自动打包签名"></a><code>cordova run android – release</code> 自动打包签名</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 生成签名文件   -alias  别名</span><br><span class="line">keytool -genkey -v -keystore release-key.keystore -alias cordova-demo -keyalg RSA -keysize 2048 -validity 10000</span><br></pre></td></tr></table></figure>
+<p>在platforms/android目录下创建<code>release-signing.properties</code> 文件，文件内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">storeFile=../../release-key.keystore</span><br><span class="line">storePassword=123456</span><br><span class="line">keyAlias=Avid</span><br><span class="line">keyPassword=123456</span><br></pre></td></tr></table></figure></p>
+<h4 id="App在启动时有短暂黑屏再显示splash页"><a href="#App在启动时有短暂黑屏再显示splash页" class="headerlink" title="App在启动时有短暂黑屏再显示splash页"></a>App在启动时有短暂黑屏再显示splash页</h4><p>解决方案：在<code>platform/android/app/src/main/res/values/</code>下创建styles.xml. 内容如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;resources&gt;</span><br><span class="line">    // 默认的启动图片  会先显示启动图片再显示splash，热启动时先显示启动图片，再进入主页</span><br><span class="line">    &lt;style name=&quot;WelcomeStyle&quot; parent=&quot;@android:style/Theme.DeviceDefault.NoActionBar&quot;&gt;</span><br><span class="line">        &lt;item name=&quot;android:windowBackground&quot;&gt;@drawable/screen&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:windowNoTitle&quot;&gt;true&lt;/item&gt;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">    // 透明色主题  缺点：热启动时会快速闪现出首页，体验不太好</span><br><span class="line">    &lt;style name=&quot;Appwelcome&quot; parent=&quot;android:Theme.Translucent.NoTitleBar&quot;&gt;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/resources&gt;</span><br></pre></td></tr></table></figure></p>
+<p>在<code>platform/android/app/src/main/res/</code>的AndroidManifest.xml文件中修改<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity android:name=&apos;MainActivity&apos; android:theme=&apos;@style/Appwelcome or WelcomeStyle&apos;&gt;&lt;/activity&gt;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/mm_facetoface_collect_qrcode_1528869904452.png" alt="Walker wang WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="../Problems/" rel="next" title="在开发中所遇到的问题及解决方法">
+                <i class="fa fa-chevron-left"></i> 在开发中所遇到的问题及解决方法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="../Throttle/" rel="prev" title="Javascript函数节流和函数防抖">
+                Javascript函数节流和函数防抖 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Walker wang</p>
+              <p class="site-description motion-element" itemprop="description">This is Wangxianyu's web blog</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="../../../../archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/myoldwang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1071328383@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Ionic页面堆栈"><span class="nav-number">1.</span> <span class="nav-text">Ionic页面堆栈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ionic-android-长时间打不开挂掉"><span class="nav-number">2.</span> <span class="nav-text">ionic android 长时间打不开挂掉</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ionic页面的生命周期"><span class="nav-number">3.</span> <span class="nav-text">ionic页面的生命周期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ionic-创建一个图标"><span class="nav-number">4.</span> <span class="nav-text">ionic 创建一个图标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#把所有平台设置为统一风格"><span class="nav-number">5.</span> <span class="nav-text">把所有平台设置为统一风格</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ionic-基于ngx-translate实现多语言切换，翻译"><span class="nav-number">6.</span> <span class="nav-text">ionic 基于ngx-translate实现多语言切换，翻译</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#当调试cordova时出现报错cordova-not-avaiable"><span class="nav-number">7.</span> <span class="nav-text">当调试cordova时出现报错cordova_not_avaiable</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用zipalign命令对安卓apk进行优化时找不到zipalign"><span class="nav-number">8.</span> <span class="nav-text">使用zipalign命令对安卓apk进行优化时找不到zipalign</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#连不上手机设备，报错could-not-read-ok-from-ADB-Server-failed-to-start-daemon"><span class="nav-number">9.</span> <span class="nav-text">连不上手机设备，报错could not read ok from ADB Server failed to start daemon</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cordova-run-android-–-release-自动打包签名"><span class="nav-number">10.</span> <span class="nav-text">cordova run android – release 自动打包签名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#App在启动时有短暂黑屏再显示splash页"><span class="nav-number">11.</span> <span class="nav-text">App在启动时有短暂黑屏再显示splash页</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Walker wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="../../../../lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="../../../../js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="../../../../js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="../../../../js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="../../../../js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="../../../../js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="../../../../js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="../../../../js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
